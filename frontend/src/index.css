@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Mulish", sans-serif;
+  scroll-behavior: smooth;
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #3d3d3d;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #000000;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+#root {
+  display: flex;
+}
+
+.hello {
+  background: -webkit-linear-gradient(top, #4b90ff, #ff5546);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.help-1{
+  color: #818181;
+}
+
+
+
+.loader {
+  display: flex;
+  column-gap: 10px;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #008ae6;
+  box-shadow: 0 5px 10px rgba(255, 255, 255, 0.01);
+  animation: animate 1s ease-in-out infinite alternate;
+}
+
+.dot:nth-child(1){
+  animation-delay: -0.25s;
+}
+
+.dot:nth-child(2){
+  background: #e60000;
+  animation-delay: -0.5s;
+}
+
+.dot:nth-child(3){
+  background: #ffcc00;
+  animation-delay: -0.75s;
+}
+
+.dot:nth-child(4){
+  background: #008800;
+  animation-delay: -1s;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}
