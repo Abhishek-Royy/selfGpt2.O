@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { RiMenuFill } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa6";
 import { IoChatboxOutline } from "react-icons/io5";
 import { MdOutlineLiveHelp } from "react-icons/md";
 import { BsClockHistory } from "react-icons/bs";
 import { IoSettingsSharp } from "react-icons/io5";
+import { Context } from "../context/Context";
 
 function Sidebar() {
   const [extended, setextended] = useState(false);
+
+  const { onSent, prevPrompts, setrecentPrompt,newChat } = useContext(Context);
+
+  const loadPrompt = async (prompt) => {
+    setrecentPrompt(prompt);
+    await onSent(prompt);
+  };
 
   return (
     <>
@@ -25,7 +33,7 @@ function Sidebar() {
           <RiMenuFill />
         </div>
 
-        <div className="newchat w-max px-4 h-12 bg-[#363636] rounded-xl mt-5 flex cursor-pointer items-center gap-5 justify-center">
+        <div onClick={()=>newChat()} className="newchat w-max px-4 h-12 bg-[#363636] rounded-xl mt-5 flex cursor-pointer items-center gap-5 justify-center">
           <div className="text-2xl">
             <FaPlus />
           </div>
@@ -36,45 +44,20 @@ function Sidebar() {
           {extended ? (
             <div>
               <h2 className="font-bold text-lg">Recently Asked</h2>
-              <div className="question mt-2 max-w-40 max-h-[45vh] overflow-y-scroll ">
-                <p className="flex items-center gap-2 p-1 text-sm">
-                  <IoChatboxOutline /> What is react ?
-                </p>
-                <p className="flex items-center gap-2 p-1 text-sm">
-                  <IoChatboxOutline /> What is react ?
-                </p>
-                <p className="flex items-center gap-2 p-1 text-sm">
-                  <IoChatboxOutline /> What is react ?
-                </p>
-                <p className="flex items-center gap-2 p-1 text-sm">
-                  <IoChatboxOutline /> What is react
-                  dvfbfbfbfdcffffffffffffffffffffffffffffffffffffffffffffffffffff
-                </p>
-                <p className="flex items-center gap-2 p-1 text-sm">
-                  <IoChatboxOutline /> What is react ?
-                </p>
-                <p className="flex items-center gap-2 p-1 text-sm">
-                  <IoChatboxOutline /> What is react ddddddddddddddddddddd?
-                </p>
-                <p className="flex items-center gap-2 p-1 text-sm">
-                  <IoChatboxOutline /> What is react ?
-                </p>
-                <p className="flex items-center gap-2 p-1 text-sm">
-                  <IoChatboxOutline /> What is react ?
-                </p>
-                <p className="flex items-center gap-2 p-1 text-sm">
-                  <IoChatboxOutline /> What is react ?
-                </p>
-                <p className="flex items-center gap-2 p-1 text-sm">
-                  <IoChatboxOutline /> What is react ?
-                </p>
-                <p className="flex items-center gap-2 p-1 text-sm">
-                  <IoChatboxOutline /> What is react ?
-                </p>
-                <p className="flex items-center gap-2 p-1 text-sm">
-                  <IoChatboxOutline /> What is react ?
-                </p>
-              </div>
+
+              {prevPrompts.map((item, index) => {
+                return (
+                  <div
+                    onClick={() => loadPrompt(item)}
+                    key={index}
+                    className="question mt-2 max-w-40 max-h-[45vh] hover:bg-slate-900 hover:cursor-pointer overflow-y-scroll "
+                  >
+                    <p className="flex items-center gap-2 p-1 text-sm">
+                      <IoChatboxOutline /> {item}...
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           ) : null}
         </div>
@@ -96,7 +79,15 @@ function Sidebar() {
 
         <footer>
           {extended ? (
-            <p className="text-sm text-center">Made By- <a href="https://www.linkedin.com/in/abhishek-roy-4a5244239/" target="_blank">Abhishek Roy</a> </p>
+            <p className="text-sm text-center">
+              Made By-{" "}
+              <a
+                href="https://www.linkedin.com/in/abhishek-roy-4a5244239/"
+                target="_blank"
+              >
+                Abhishek Roy
+              </a>{" "}
+            </p>
           ) : null}
         </footer>
       </div>

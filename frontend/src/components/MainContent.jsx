@@ -44,9 +44,7 @@ function MainContent() {
               <div className="cards flex flex-wrap justify-between mt-5">
                 <div className="card hover:bg-blue-50 cursor-pointer hidden sm:block sm:w-[18vw] h-auto p-5 rounded-lg bg-blue-100">
                   <p className="font-semibold">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Doloremque excepturi consequatur a voluptate eaque quaerat
-                    voluptatibus nobis. Asperiores sit optio pariatur sequi.
+                  I need a tagline for my online store selling handmade jewelry, based around nature themes. I want people to feel beautiful, classy, down-to-earth, special.
                   </p>
                   <div className="text-4xl">
                     <LuCompass />
@@ -54,9 +52,7 @@ function MainContent() {
                 </div>
                 <div className="card hover:bg-blue-50 cursor-pointer hidden sm:block sm:w-[18vw] h-auto p-5 rounded-lg bg-blue-100 ">
                   <p className="font-semibold">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Doloremque excepturi consequatur a voluptate eaque quaerat
-                    voluptatibus nobis. Asperiores sit optio pariatur sequi.
+                  Generate an image and a bedtime story about a mini golden doodle, clad in a scarf, on an epic adventure to climb a snowy mountain.
                   </p>
                   <div className="text-4xl">
                     <TiLightbulb />
@@ -64,9 +60,7 @@ function MainContent() {
                 </div>
                 <div className="card hover:bg-blue-50 cursor-pointer hidden sm:block sm:w-[18vw] h-auto p-5 rounded-lg bg-blue-100 ">
                   <p className="font-semibold">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Doloremque excepturi consequatur a voluptate eaque quaerat
-                    voluptatibus nobis. Asperiores sit optio pariatur sequi.
+                  Recommend 3-5 different types of water sports that might be a good fit for me. Include a brief overview of each sport, as well as the pros and cons of each one.
                   </p>
                   <div className="text-4xl">
                     <LuScrollText />
@@ -74,9 +68,7 @@ function MainContent() {
                 </div>
                 <div className="card hover:bg-blue-50 cursor-pointer hidden sm:block sm:w-[18vw] h-auto p-5 rounded-lg bg-blue-100 ">
                   <p className="font-semibold">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Doloremque excepturi consequatur a voluptate eaque quaerat
-                    voluptatibus nobis. Asperiores sit optio pariatur sequi.
+                  Briefly summarize this concept: urban planning. Include a brief description of the term and list key aspects of the concept. 
                   </p>
                   <div className="text-4xl">
                     <FaCode />
@@ -139,9 +131,11 @@ function MainContent() {
                 <IoMdMic />
               </div>
 
-              <div onClick={() => onSent()} className="cursor-pointer">
-                <IoSend />
-              </div>
+              {input ? (
+                <div onClick={() => onSent()} className="cursor-pointer">
+                  <IoSend />
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
@@ -150,7 +144,16 @@ function MainContent() {
           <p className="text-center sm:block hidden">
             Thanks for use my gpt-AI. I will try to doing my best
           </p>
-          <p className="text-center">Copyright © ~ Allright reserved - 2024</p>
+          <p className="text-center">
+            Copyright © ~ Allright reserved - 2024 •
+            <a
+              href="https://www.linkedin.com/in/abhishek-roy-4a5244239/"
+              target="_blank"
+            >
+              {" "}
+              Abhishek Roy
+            </a>
+          </p>
         </div>
       </div>
     </>
